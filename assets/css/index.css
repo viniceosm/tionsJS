@@ -45,7 +45,7 @@ a {
 }
 
 #onda:before {
-	background: transparent url('../../assets/svg/wave.svg') top center no-repeat;
+	background: transparent url('../svg/wave.svg') top center no-repeat;
     -webkit-background-size: 3000px 151px;
     background-size: 3000px 151px;
     content: '';
