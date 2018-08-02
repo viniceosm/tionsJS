@@ -1,3 +1,7 @@
+var clientId = '0338f5fdfd33a577d6fa'
+var clientSecret = '975d21df1f6683b67fe436b638deb7bc4f4d750f'
+var authApi = `client_id=${clientId}&client_secret=${clientSecret}`
+
 var demo = new Vue({
 	el: '#app',
 	data: {
@@ -5,15 +9,16 @@ var demo = new Vue({
 		branches: ['master', 'dev'],
 		currentBranch: 'master',
 		commits: null,
-		repos: []
+		repos: [],
+		commitsRepos: [],
 	},
 	watch: {
 		currentBranch: 'fetchData'
 	},
 	computed: {
-		apiURL() {
-			return `https://api.github.com/users/${this.user}/repos`
-		}
+		apiURLRepos() {
+			return `https://api.github.com/users/${this.user}/repos?${authApi}`
+		},
 	},
 	filters: {
 		truncate: function (v) {
@@ -29,11 +34,32 @@ var demo = new Vue({
 		fetchData: function () {
 			var xhr = new XMLHttpRequest()
 			var self = this
-			xhr.open('GET', this.apiURL)
+			xhr.open('GET', self.apiURLRepos)
 			xhr.onload = function () {
 				self.repos = JSON.parse(xhr.responseText)
+
+				self.fetchCommits()
 			}
 			xhr.send()
+		},
+		fetchCommits: function() {
+			var self = this
+
+			this.repos.forEach(function(repo) {
+				var xhr = new XMLHttpRequest()
+				xhr.open('GET', self.apiURLCommits(repo.full_name))
+				xhr.onload = function () {
+					self.commitsRepos.push({
+							full_name: repo.full_name,
+							numero: JSON.parse(xhr.responseText).length
+					})
+				}
+				xhr.send()
+			})
+
+		 },
+		apiURLCommits(fullNameRepo) {
+			return `https://api.github.com/repos/${fullNameRepo}/commits?${authApi}&author=${this.user}`
 		}
 	}
 })

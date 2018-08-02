@@ -24,28 +24,37 @@
 				<div class="title"><h4 id="titleProject">tionsJS</h4></div>
 			</template>
 
-			<input type="text" v-model="user" placeholder="User" v-on:keyup.enter="fetchData">
+			<input type="text" v-model="user" placeholder="User" v-on:keyup.enter="fetchData" autofocus />
 
 
 			<ul v-if="repos.length">
 				<br><br><span>Repositories:</span>
 
-				<li v-for="record in repos">
-					<span v-if="!record.fork">
+				<li v-for="repo in repos">
+					<span v-if="!repo.fork">
 						<img src="assets/i/repo.svg" title="Repo" />
 					</span>
 					<span v-else>
 						<img src="assets/i/repo-forked.svg" title="Repo forked" />
 					</span>
 
-					<a :href="record.html_url" target="_blank" class="name-repo" title="Created at {{ record.created_at | formatDate }}">
-						{{ record.name }}
+					<a :href="repo.html_url" target="_blank" class="name-repo" title="Created at {{ repo.created_at | formatDate }}">
+						{{ repo.name }}
 					</a>
 				</li>
 			</ul>
 			<ul v-else>
 				<li>Type your username</li>
-			</h1>
+			</ul>
+
+
+			<ul v-if="commitsRepos.length">
+				<br><br><span>Repos - commit:</span>
+
+				<li v-for="repo in commitsRepos">
+					{{ repo.full_name }} - {{ repo.numero }}
+				</li>
+			</ul>
 		</div>
 	</div>
 
