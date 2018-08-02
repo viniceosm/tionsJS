@@ -15,3 +15,24 @@ body {
 	text-align: center;
 	font-size: 20px;
 }
+
+#onda{
+    background-color: #0060df;
+    background-image: linear-gradient(to bottom,#0060df 0,#009cff 50%,#00abff 100%);
+    color: #fff;
+	position: relative;
+	height: 100vh;
+}
+
+#onda:before {
+	background: transparent url(wave.svg) top center no-repeat;
+    -webkit-background-size: 3000px 151px;
+    background-size: 3000px 151px;
+    content: '';
+    display: block;
+    height: 151px;
+    left: 0;
+    position: absolute;
+    top: -5px;
+    width: 100%;
+}
