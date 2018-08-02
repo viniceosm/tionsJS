@@ -31,10 +31,16 @@
 				<br><br><span>Repositories:</span>
 
 				<li v-for="record in repos">
-					<a :href="record.html_url" target="_blank" class="commit">{{ record.name }}</a>
-					-
-					<span class="date">{{ record.created_at | formatDate }}</span>
-					<span v-if="record.fork"> - fork</span>
+					<span v-if="!record.fork">
+						<img src="assets/i/repo.svg" title="Repo" />
+					</span>
+					<span v-else>
+						<img src="assets/i/repo-forked.svg" title="Repo forked" />
+					</span>
+
+					<a :href="record.html_url" target="_blank" class="name-repo" title="Created at {{ record.created_at | formatDate }}">
+						{{ record.name }}
+					</a>
 				</li>
 			</ul>
 			<ul v-else>

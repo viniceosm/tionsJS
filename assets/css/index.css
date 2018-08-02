@@ -16,7 +16,7 @@ a {
 }
 
 .title {
-	margin-top: calc(27% - (1.5em / 2));
+	margin-top: calc(50% - (1.5em));
 	width: 100%;
 	text-align: center;
 	font-size: 20px;
@@ -34,10 +34,18 @@ a {
 	list-style-type:none;
 }
 
+#content input {
+	border: 2px solid #a9aaff;
+}
+
+.name-repo {
+	padding: 0 0 0 10px
+}
+
 #onda{
-    background-color: #0060df;
-    background-image: linear-gradient(to bottom,#0060df 0,#009cff 50%,#00abff 100%);
-    color: #fff;
+	background-color: #0060df;
+	background-image: linear-gradient(to bottom,#0060df 0,#009cff 50%,#00abff 100%);
+	color: #fff;
 	position: fixed;
 	height: 100vh;
 	z-index: -1;
@@ -46,13 +54,13 @@ a {
 
 #onda:before {
 	background: transparent url('../svg/wave.svg') top center no-repeat;
-    -webkit-background-size: 3000px 151px;
-    background-size: 3000px 151px;
-    content: '';
-    display: block;
-    height: 151px;
-    left: 0;
-    position: absolute;
-    top: -5px;
-    width: 100%;
+	-webkit-background-size: 3000px 151px;
+	background-size: 3000px 151px;
+	content: '';
+	display: block;
+	height: 151px;
+	left: 0;
+	position: absolute;
+	top: -5px;
+	width: 100%;
 }
