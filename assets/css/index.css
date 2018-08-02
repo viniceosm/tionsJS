@@ -64,3 +64,10 @@ a {
 	top: -5px;
 	width: 100%;
 }
+
+@media only screen and (min-width: 600px) {
+	/* For tablets: */
+	.title {
+		margin-top: calc(9% - (1.5em / 2));
+	}
+}
