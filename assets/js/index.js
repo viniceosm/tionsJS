@@ -1,14 +1,11 @@
 var demo = new Vue({
 	el: '#app',
 	data: {
-		user: 'viniceosm',
+		user: '',
 		branches: ['master', 'dev'],
 		currentBranch: 'master',
 		commits: null,
-		repos: null
-	},
-	created: function () {
-		this.fetchData()
+		repos: []
 	},
 	watch: {
 		currentBranch: 'fetchData'

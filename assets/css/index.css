@@ -6,6 +6,13 @@ body {
 	font-family: 'Open Sans', sans-serif;
 	height: 100vh;
 	margin: 0px;
+	background: grey;
+}
+
+a {
+	text-decoration: none;
+	color: white;
+	font-weight: 900;
 }
 
 .title {
@@ -20,6 +27,11 @@ body {
 	position: relative;
 	overflow: auto;
 	color: white;
+	padding: 20px;
+}
+
+#content li {
+	list-style-type:none;
 }
 
 #onda{

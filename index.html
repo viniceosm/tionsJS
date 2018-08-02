@@ -24,14 +24,22 @@
 				<div class="title"><h4 id="titleProject">tionsJS</h4></div>
 			</template>
 
-			<ul>
+			<input type="text" v-model="user" placeholder="User" v-on:keyup.enter="fetchData">
+
+
+			<ul v-if="repos.length">
+				<br><br><span>Repositories:</span>
+
 				<li v-for="record in repos">
 					<a :href="record.html_url" target="_blank" class="commit">{{ record.name }}</a>
 					-
 					<span class="date">{{ record.created_at | formatDate }}</span>
-					- fork = {{ record.fork }}
+					<span v-if="record.fork"> - fork</span>
 				</li>
 			</ul>
+			<ul v-else>
+				<li>Type your username</li>
+			</h1>
 		</div>
 	</div>
 
