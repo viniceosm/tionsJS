@@ -36,6 +36,7 @@ a {
 
 #content input {
 	border: 2px solid #a9aaff;
+	padding: 7px 2px;
 }
 
 .name-repo {
@@ -69,5 +70,9 @@ a {
 	/* For tablets: */
 	.title {
 		margin-top: calc(9% - (1.5em / 2));
+	}
+
+	#content input {
+		padding: initial;
 	}
 }
