@@ -15,8 +15,8 @@
 	<link rel="stylesheet" href="assets/css/index.css">
 </head>
 
-<body>
-	<div id="onda"></div>
+<body class="">
+	<!-- <div id="onda.show"></div> -->
 
 	<div id="content">
 		<div id="app">
@@ -24,37 +24,43 @@
 				<div class="title"><h4 id="titleProject">tionsJS</h4></div>
 			</template>
 
-			<input type="text" v-model="user" placeholder="User" v-on:keyup.enter="fetchData" autofocus />
+			<input type="text" v-model="user" placeholder="User" v-on:keyup.enter="fetchRepos" autofocus />
 
+			<div v-if="!buscandoNumeroCommits">
+				<div>Total commits: {{ total_commits }}</div>
 
-			<ul v-if="repos.length">
-				<br><br><span>Repositories:</span>
+				<ul v-if="repos.length">
+					<br><br><span>Repositories:</span>
 
-				<li v-for="repo in repos">
-					<span v-if="!repo.fork">
-						<img src="assets/i/repo.svg" title="Repo" />
-					</span>
-					<span v-else>
-						<img src="assets/i/repo-forked.svg" title="Repo forked" />
-					</span>
+					<li v-for="repo in repos">
+						<span v-if="!repo.fork">
+							<img src="assets/i/repo.svg" title="Repo" />
+						</span>
+						<span v-else>
+							<img src="assets/i/repo-forked.svg" title="Repo forked" />
+						</span>
 
-					<a :href="repo.html_url" target="_blank" class="name-repo" title="Created at {{ repo.created_at | formatDate }}">
-						{{ repo.name }}
-					</a>
-				</li>
-			</ul>
-			<ul v-else>
+						<a :href="repo.html_url" target="_blank" class="name-repo">
+							{{ repo.full_name }} - {{ repo.numero_commits }}
+						</a>
+					</li>
+				</ul>
+			</div>
+			<ul v-if="usuarioVazio">
 				<li>Type your username</li>
 			</ul>
 
 
-			<ul v-if="commitsRepos.length">
-				<br><br><span>Repos - commit:</span>
+			<ul v-if="datasCommits.length">
+				<br><br><span>datasCommits:</span>
 
-				<li v-for="repo in commitsRepos">
-					{{ repo.full_name }} - {{ repo.numero }}
+				<li v-for="repoc in datasCommits">
+					{{ repoc.valorVerificar }} - {{ repoc.q }}
 				</li>
 			</ul>
+
+			<div id="quadro">
+			</div>
 		</div>
 	</div>
 

@@ -6,13 +6,15 @@ body {
 	font-family: 'Open Sans', sans-serif;
 	height: 100vh;
 	margin: 0px;
-	background: grey;
 }
 
 a {
 	text-decoration: none;
-	color: white;
 	font-weight: 900;
+}
+
+.onda-show a {
+	color: white;
 }
 
 .title {
@@ -20,14 +22,20 @@ a {
 	width: 100%;
 	text-align: center;
 	font-size: 20px;
+}
+
+.onda-show .title {
 	color: white;
 }
 
-#content{
+#content {
 	position: relative;
 	overflow: auto;
-	color: white;
 	padding: 20px;
+}
+
+.onda-show #content {
+	color: white;
 }
 
 #content li {
@@ -43,7 +51,7 @@ a {
 	padding: 0 0 0 10px
 }
 
-#onda{
+#onda.show{
 	background-color: #0060df;
 	background-image: linear-gradient(to bottom,#0060df 0,#009cff 50%,#00abff 100%);
 	color: #fff;
@@ -53,7 +61,7 @@ a {
 	width: 100%;
 }
 
-#onda:before {
+#onda.show:before {
 	background: transparent url('../svg/wave.svg') top center no-repeat;
 	-webkit-background-size: 3000px 151px;
 	background-size: 3000px 151px;
@@ -64,6 +72,21 @@ a {
 	position: absolute;
 	top: -5px;
 	width: 100%;
+}
+
+/* 53x7 (quadrados de dias) */
+#quadro {
+	width: 669px;
+	height: 104px;
+	background: aliceblue;
+}
+
+#quadro .dias {
+	width: 10px;
+	height: 10px;
+	background: #fff;
+	float: left;
+	margin-right: 2px;
 }
 
 @media only screen and (min-width: 600px) {
