@@ -76,9 +76,10 @@ a {
 
 /* 53x7 (quadrados de dias) */
 #quadro {
-	width: 669px;
-	height: 104px;
-	background: aliceblue;
+	width: 638px;
+	height: 86px;
+	padding: 2px 0 0 2px;
+	background: black;
 }
 
 #quadro .dias {
@@ -87,6 +88,7 @@ a {
 	background: #fff;
 	float: left;
 	margin-right: 2px;
+	margin-bottom: 2px;
 }
 
 @media only screen and (min-width: 600px) {

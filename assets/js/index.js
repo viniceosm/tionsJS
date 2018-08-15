@@ -1,6 +1,17 @@
 var clientId = '0338f5fdfd33a577d6fa';
 var clientSecret = '975d21df1f6683b67fe436b638deb7bc4f4d750f';
 var authApi = `client_id=${clientId}&client_secret=${clientSecret}`;
+var coresQuadro = [
+	'#ff4eff', /* 1 ou 2 commits */
+	'#e646e6', /* 3 ou 4 commits */
+	'#cc3ecc', /* 5 ou 6 commits */
+	'#b337b3', /* 7 ou 8 commits */
+	'#992f99', /* 9 ou 10 commits  */
+	'#802780', /* 11 ou 12 commits */
+	'#661f66', /* 13 ou 14 commits */
+	'#4d174d' /* 15 ou 16 commits */
+];
+var intervaloCores = [[1, 2], [3, 4], [5, 6], [7, 8], [9, 10], [11, 12], [13, 14], [15, 16]];
 
 var demo = new Vue({
 	el: '#app',
@@ -40,6 +51,7 @@ var demo = new Vue({
 
 		datasDoQuadro = datasDoQuadro.reverse();
 
+		let lum = 20;
 		for (let data of datasDoQuadro) {
 			html += `<div class="dias" data="${formataData(data)}"></div>`;
 		}
@@ -88,7 +100,23 @@ var demo = new Vue({
 
 						datasCommits = sortearPorDataString(verRepeticao(datasCommits), 1);
 						self.datasCommits = datasCommits.slice(0);
-						console.log(self.datasCommits);
+
+						datasCommits.map(function(o) {
+							let cor = 'white';
+							if (o.q > 0) {
+								let corIndex = intervaloCores.findIndex(function (f) { return f.includes(o.q) });
+								if (corIndex == -1) {
+									cor = coresQuadro[coresQuadro.length-1];
+								} else {
+									cor = coresQuadro[corIndex];
+								}
+							}
+
+							if (document.querySelector(`[data="${o.valorVerificar}"]`) !== null) {
+								console.log(document.querySelector(`[data="${o.valorVerificar}"]`));
+								document.querySelector(`[data="${o.valorVerificar}"]`).style.backgroundColor = cor;
+							}
+						});
 					}
 				}
 				xhr.send();
