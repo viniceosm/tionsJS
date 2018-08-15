@@ -26,6 +26,9 @@
 
 			<input type="text" v-model="user" placeholder="User" v-on:keyup.enter="fetchRepos" autofocus />
 
+			<div id="quadro">
+			</div>
+
 			<div v-if="!buscandoNumeroCommits">
 				<div>Total commits: {{ total_commits }}</div>
 
@@ -49,18 +52,6 @@
 			<ul v-if="usuarioVazio">
 				<li>Type your username</li>
 			</ul>
-
-
-			<ul v-if="datasCommits.length">
-				<br><br><span>datasCommits:</span>
-
-				<li v-for="repoc in datasCommits">
-					{{ repoc.valorVerificar }} - {{ repoc.q }}
-				</li>
-			</ul>
-
-			<div id="quadro">
-			</div>
 		</div>
 	</div>
 
